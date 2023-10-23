@@ -1,13 +1,14 @@
-import {MeseroLayout} from "../layouts";
-import {LoginMesero} from "../pages/Mesero";
+import {GlobalLayout} from "../layouts";
+import {HomeMesero} from "../pages/Mesero";
 
 
-const routesAdmin=[
+const routesMesero=[
     {
         path:"/mesero",
-        layout: MeseroLayout,
-        component: LoginMesero,
+        layout: GlobalLayout,
+        component: HomeMesero,
     }
 ];
 
-export default routesAdmin;
+export default routesMesero;
+

@@ -1,3 +1,2 @@
-export * from "./MeseroLayout";
-export * from "./AdminLayout";
+export * from "./GlobalLayout";
 export * from "./BasicLayout";

@@ -1,13 +1,15 @@
 import React from 'react';
-import "./AdminLayout.css";
-import {LoginAdmin} from "../../pages/Admin"
+import "./GlobalLayout.css";
+import { Login } from '../../pages/Login';
 
-export function AdminLayout(props) {
+
+
+export function GlobalLayout(props) {
     const {children} =props;
     /*Esto es para saber que el usuario no esta log*/
     const auth = null;
 
-    if (!auth) return <LoginAdmin />;
+    if (!auth) return <Login />;
 
   return (
     <div>
