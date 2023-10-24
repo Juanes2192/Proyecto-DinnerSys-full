@@ -7,13 +7,13 @@ import { Login } from '../../pages/Login';
 export function GlobalLayout(props) {
     const {children} =props;
     /*Esto es para saber que el usuario no esta log*/
-    const auth = null;
+    const auth = "Agustin";
 
     if (!auth) return <Login />;
 
   return (
     <div>
-        <p>AdminLayout</p>
+        <p>GlobalLayoutLayout</p>
         {children}
     </div>
   )
