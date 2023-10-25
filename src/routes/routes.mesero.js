@@ -1,11 +1,11 @@
-import {GlobalLayout} from "../layouts";
+import {MeseroLayout} from "../layouts";
 import {HomeMesero} from "../pages/Mesero";
 
 
 const routesMesero=[
     {
         path:"/mesero",
-        layout: GlobalLayout,
+        layout: MeseroLayout,
         component: HomeMesero,
     }
 ];

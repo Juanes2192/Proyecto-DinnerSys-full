@@ -1,10 +1,10 @@
 import React from 'react';
-import "./GlobalLayout.css";
+import "./MeseroLayout.css";
 import { Login } from '../../pages/Login';
 
 
 
-export function GlobalLayout(props) {
+export function MeseroLayout(props) {
     const {children} =props;
     /*Esto es para saber que el usuario no esta log*/
     const auth = "agustin";
@@ -13,7 +13,7 @@ export function GlobalLayout(props) {
 
   return (
     <div>
-        <p>GlobalLayoutLayout</p>
+        <p>MeseroLayout</p>
         {children}
     </div>
   )

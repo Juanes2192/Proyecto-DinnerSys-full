@@ -1,9 +1,13 @@
 import React,{useState} from 'react';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+
 import "./Home.css";
 import Logodinnersys from "../../components/img/Logodinnersys.png";
 
+
 export function Home() {
   const [userType, setUserType] = useState('');
+  const navigate = useNavigate(); // Inicializa navigate
 
   const handleUserTypeChange = (event) => {
     setUserType(event.target.value);
@@ -12,7 +16,17 @@ export function Home() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Tipo de usuario seleccionado:', userType);
+
+    if (userType === 'administrador') {
+      navigate('/admin'); // Navega a la ruta '/admin' usando useNavigate
+    }
+
+    if (userType === 'mesero') {
+      navigate('/mesero'); // Navega a la ruta '/admin' usando useNavigate
+    }
   };
+
+
   return (
     <div className='home-container'>
       <img className='logo-image' src={Logodinnersys} alt="logo" />
