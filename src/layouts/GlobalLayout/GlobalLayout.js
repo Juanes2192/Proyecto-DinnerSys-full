@@ -13,7 +13,6 @@ export function GlobalLayout(props) {
 
   return (
     <div>
-        <p>GlobalLayoutLayout</p>
         {children}
     </div>
   )
