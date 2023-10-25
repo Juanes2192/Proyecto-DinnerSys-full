@@ -1,0 +1,1 @@
+export const BASE_API =""//Aqui va la ruta raiz del back
