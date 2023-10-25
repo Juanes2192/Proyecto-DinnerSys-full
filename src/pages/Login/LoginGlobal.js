@@ -51,8 +51,8 @@ export function Login() {
 
   function initialValues() {
     return {
-      email: "juan.perdomo@gmail.com",
-      password: "15161651"
+      email: "",
+      password: ""
     }
   }
   
