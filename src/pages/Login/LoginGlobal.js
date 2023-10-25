@@ -29,6 +29,7 @@ export function Login() {
         placeholder="Correo electronico"
         value={formik.values.email}
         onChange={formik.handleChange}
+        error={formik.errors.email}
       />
       <Form.Input
         name="password"
@@ -36,6 +37,7 @@ export function Login() {
         placeholder="Contraseña"
         value={formik.values.password}
         onChange={formik.handleChange}
+        error={formik.errors.password}
       />
       <Button
         type="submit"
