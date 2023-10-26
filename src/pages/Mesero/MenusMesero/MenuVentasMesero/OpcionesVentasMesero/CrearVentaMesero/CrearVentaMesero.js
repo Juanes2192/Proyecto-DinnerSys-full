@@ -2,9 +2,9 @@ import React from 'react';
 import { Form, Input, Button } from 'semantic-ui-react';
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import "./CrearProductoAdmin.css";
+import "./CrearVentaMesero.css";
 
-export function CrearProductoAdmin() {
+export function CrearVentaMesero() {
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: validationSchema(),
@@ -13,13 +13,12 @@ export function CrearProductoAdmin() {
             console.log(formValue);
         }
     });
-
-    return (
-        <div className='form-productos'>
-            <Form className='create-product-form' onSubmit={formik.handleSubmit}>
-                <h1>Crear Producto</h1>
+  return (
+    <div className='form-ventas'>
+            <Form className='create-ventas-form' onSubmit={formik.handleSubmit}>
+                <h1>Crear Venta</h1>
                 <Form.Field>
-                    <label>Código del Producto</label>
+                    <label>Código Venta</label>
                     <Input
                         name="codigoProducto"
                         placeholder="Código del Producto"
@@ -37,6 +36,17 @@ export function CrearProductoAdmin() {
                         onChange={formik.handleChange}
                     />
                     {formik.errors.nombreProducto && <div className="error">{formik.errors.nombreProducto}</div>}
+                </Form.Field>
+                <Form.Field>
+                    <label>Cantidad</label>
+                    <Input
+                        name="cantidad"
+                        type="number"
+                        placeholder="Cantidad"
+                        value={formik.values.cantidad}
+                        onChange={formik.handleChange}
+                    />
+                    {formik.errors.cantidad && <div className="error">{formik.errors.cantidad}</div>}
                 </Form.Field>
                 <Form.Field>
                     <label>Categoría</label>
@@ -59,30 +69,35 @@ export function CrearProductoAdmin() {
                     />
                     {formik.errors.precio && <div className="error">{formik.errors.precio}</div>}
                 </Form.Field>
-                <Button type="submit">Crear Producto</Button>
+                <Button type="submit">Crear Venta</Button>
             </Form>
         </div>
-    );
-
-    function initialValues() {
-        return {
-            codigoProducto: "",
-            nombreProducto: "",
-            categoria: "",
-            precio: 0,
-        };
-    }
-
-    function validationSchema() {
-      return Yup.object({
-          codigoProducto: Yup.string().required("El código del producto es obligatorio"),
-          nombreProducto: Yup.string().required("El nombre del producto es obligatorio"),
-          categoria: Yup.string().required("La categoría es obligatoria"),
-          precio: Yup.number().required("El precio es obligatorio").min(1, "El precio debe ser mayor que cero"),
-      });
+  );
+  function initialValues() {
+    return {
+        codigoProducto: "",
+        nombreProducto: "",
+        cantidad: 0,
+        categoria: "",
+        precio: 0,
+    };
   }
-    }
-    
-    
-    
 
+  function validationSchema() {
+    return Yup.object({
+        codigoProducto: Yup.string().required("El código del producto es obligatorio"),
+        nombreProducto: Yup.string().required("El nombre del producto es obligatorio"),
+        cantidad: Yup.number().required("La cantidad es obligatoria").min(1, "La cantidad debe ser mayor que cero"),
+        categoria: Yup.string().required("La categoría es obligatoria"),
+        precio: Yup.number().required("El precio es obligatorio").min(1, "El precio debe ser mayor que cero"),
+    });
+}
+
+
+}
+
+
+///////
+
+    
+    

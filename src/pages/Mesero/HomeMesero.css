@@ -1,0 +1,24 @@
+.mesero-bar {
+    background-color: #8B4513; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    height: 80px;
+  }
+  
+  .mesero-button {
+    background-color: #8B4513; 
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .mesero-button:hover {
+    background-color: #A0522D; 
+  }
+  

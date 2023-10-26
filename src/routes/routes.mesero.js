@@ -1,5 +1,5 @@
 import {MeseroLayout} from "../layouts";
-import {HomeMesero} from "../pages/Mesero";
+import {HomeMesero,MenuVentasMesero,CrearVentaMesero,ListadoVentaMesero} from "../pages/Mesero";
 
 
 const routesMesero=[
@@ -7,7 +7,22 @@ const routesMesero=[
         path:"/mesero",
         layout: MeseroLayout,
         component: HomeMesero,
-    }
+    },
+    {
+        path:"/mesero/ventas",
+        layout:MeseroLayout,
+        component:MenuVentasMesero,
+    },
+    {
+        path:"/mesero/ventas/crearventas",
+        layout:MeseroLayout,
+        component:CrearVentaMesero,
+    },
+    {
+        path:"/mesero/usuarios/listadoventas",
+        layout:MeseroLayout,
+        component:ListadoVentaMesero,
+    },
 ];
 
 export default routesMesero;
