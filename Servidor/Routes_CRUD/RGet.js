@@ -4,28 +4,36 @@ const DataDB = require('../db/Datos.json');
 const router = express.Router();
 
 
-// Traer Meseros "uniendo" la tabla TipoUsuario y Usuario
-let Meseros = DataDB.Usuarios.filter((mesero) => mesero.TipoUsuarioId === 2);
+// Traer Meseros 
+let Meseros = DataDB.Usuarios.filter((mesero) => mesero.Rol === "Mesero");
 Meseros = Meseros;
 
-// Traer Administradores "uniendo" la tabla TipoUsuario y Usuario
-let Admin = DataDB.Usuarios.filter((admin) => admin.TipoUsuarioId === 1);
+// Traer Administradores 
+let Admin = DataDB.Usuarios.filter((admin) => admin.Rol === "Admin");
 Admin = Admin;
 
+//Traer Usuarios
+const Usuarios = DataDB.Usuarios;
+
+//Traer todos los productos
 const Productos = DataDB.Productos;
 
+//Traer todas las ventas
 const Ventas = DataDB.Ventas;
 
 // GET USUARIOS
+//Traer todos los Usuarios
+router.get("/Usuarios/MostrarUsuarios", (req, res) => {
+    res.status(200).json(Usuarios);
+});
+
 // Traer todos los Meseros
 router.get("/Usuarios/MostrarMeseros", (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
     res.status(200).json(Meseros);
 });
 
 // Traer todos los Administradores
 router.get("/usuarios/MostrarAdmins", (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
     res.status(200).json(Admin);
 });
 
@@ -33,14 +41,13 @@ router.get("/usuarios/MostrarAdmins", (req, res) => {
 //GET PRODUCTOS
 // Traer Todos los Productos
 router.get("/Productos/MostrarProductos", (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
     res.status(200).json(Productos);
 });
 
 // GET VENTAS
 // Traer Todas las ventas
 router.get("/Ventas/MostrarVentas", (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
+    
     res.status(200).json(Ventas);
 });
 

@@ -1,1 +1,1 @@
-export const BASE_API =""//Aqui va la ruta raiz del back
+export const BASE_API = "http://localhost:3001";

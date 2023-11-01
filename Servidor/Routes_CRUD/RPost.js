@@ -31,16 +31,16 @@ router.post('/Usuarios/CrearUsuario', (req, res) => {
         ...newUsuario
     }
 
-    if (newUsuario.Nombre === "" || newUsuario.TipoUsuarioId === "") {
+    if (newUsuario.Nombre === "" || newUsuario.Rol === "") {
         res.status(400).json({ error: "Ausencia de datos" });
     } else {
-        if (newUsuario.TipoUsuarioId === "1") {
+        if (newUsuario.Rol === "Admin") {
             console.log(newUsuario);
             datosDB.Usuarios.push(newUsuario);
             actualizarBDJSON(datosDB);
             res.status(201).json(correcto('Administrador'));
 
-        } else if (newUsuario.TipoUsuarioId === "2") {
+        } else if (newUsuario.Rol === "Mesero") {
             console.log(newUsuario);
             datosDB.Usuarios.push(newUsuario);
             actualizarBDJSON(datosDB);

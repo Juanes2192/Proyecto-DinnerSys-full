@@ -13,9 +13,9 @@ export function MenuProductosAdmin() {
   }
 
   return (
-    <div class="producto-bar">
-        <button class="producto-button" onClick={handleCrearProductoClick}>Crear Producto</button>
-        <button class="producto-button" onClick={handleListadoProductosClick}>Listado de Productos</button>
+    <div className="producto-bar">
+        <button className="producto-button" onClick={handleCrearProductoClick}>Crear Producto</button>
+        <button className="producto-button" onClick={handleListadoProductosClick}>Listado de Productos</button>
     </div> 
   );
 

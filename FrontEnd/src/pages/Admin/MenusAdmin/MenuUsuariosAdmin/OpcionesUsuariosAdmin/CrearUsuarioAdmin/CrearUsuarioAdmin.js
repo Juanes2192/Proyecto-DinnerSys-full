@@ -3,14 +3,31 @@ import { Form, Input, Button } from 'semantic-ui-react';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./CrearUsuarioAdmin.css";
+import "../../../../../../App.css";
+import axios  from 'axios';
+import { BASE_API } from '../../../../../../utils/constants';
 
 export function CrearUsuarioAdmin() {
+
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: validationSchema(),
         onSubmit: (formValue) => {
             console.log("Usuario ok");
             console.log(formValue);
+            let data = {
+                Nombre: formValue.nombre + " " + formValue.apellido,
+                Rol: formValue.rol
+            }
+            // console.log(data);
+
+            axios.post(`${BASE_API}/Usuarios/CrearUsuario`, data)
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error)=>{
+                    console.error('error: ', error);
+                })
         }
     });
 
@@ -26,7 +43,7 @@ export function CrearUsuarioAdmin() {
                         value={formik.values.nombre}
                         onChange={formik.handleChange}
                     />
-                    {formik.errors.nombre && <div className="error">{formik.errors.nombre}</div>}
+                    {formik.errors.nombre && <span className="error">{formik.errors.nombre}</span>}
                 </Form.Field>
                 <Form.Field>
                     <label>Apellido usuario</label>
@@ -36,7 +53,7 @@ export function CrearUsuarioAdmin() {
                         value={formik.values.apellido}
                         onChange={formik.handleChange}
                     />
-                    {formik.errors.apellido && <div className="error">{formik.errors.apellido}</div>}
+                    {formik.errors.apellido && <span className="error">{formik.errors.apellido}</span>}
                 </Form.Field>
                 <Form.Field>
                     <label>Correo electrónico</label>
@@ -46,7 +63,7 @@ export function CrearUsuarioAdmin() {
                         value={formik.values.email}
                         onChange={formik.handleChange}
                     />
-                    {formik.errors.email && <div className="error">{formik.errors.email}</div>}
+                    {formik.errors.email && <span className="error">{formik.errors.email}</span>}
                 </Form.Field>
                 <Form.Field>
                     <label>Rol usuario</label>
@@ -56,7 +73,7 @@ export function CrearUsuarioAdmin() {
                         value={formik.values.rol}
                         onChange={formik.handleChange}
                     />
-                    {formik.errors.rol && <div className="error">{formik.errors.rol}</div>}
+                    {formik.errors.rol && <span className="error">{formik.errors.rol}</span>}
                 </Form.Field>
                 <Form.Field>
                     <label>Contraseña</label>
@@ -67,7 +84,7 @@ export function CrearUsuarioAdmin() {
                         value={formik.values.password}
                         onChange={formik.handleChange}
                     />
-                    {formik.errors.password && <div className="error">{formik.errors.password}</div>}
+                    {formik.errors.password && <span className="error">{formik.errors.password}</span>}
                 </Form.Field>
                 <Button type="submit">Registrar Usuario</Button>
             </Form>

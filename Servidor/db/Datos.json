@@ -1,29 +1,29 @@
 {
-  "TipoUsuario": [
-    {
-      "id": 1,
-      "Tipo": "Admin"
-    },
-    {
-      "id": 2,
-      "Tipo": "Mesero"
-    }
-  ],
   "Usuarios": [
     {
       "id": 1,
       "Nombre": "Juan Jose",
-      "TipoUsuarioId": 1
+      "Rol": "Admin"
     },
     {
       "id": 2,
       "Nombre": "Geraldine",
-      "TipoUsuarioId": 2
+      "Rol": "Mesero"
     },
     {
       "id": 3,
       "Nombre": "Giseth Tatiana",
-      "TipoUsuarioId": 2
+      "Rol": "Mesero"
+    },
+    {
+      "id": 4,
+      "Nombre": "Juan Ferney Aragon",
+      "Rol": "Mesero"
+    },
+    {
+      "id": 5,
+      "Nombre": "Valeria Marin",
+      "Rol": "Mesero"
     }
   ],
   "Productos": [
@@ -62,6 +62,12 @@
       "Nombre": "Lulada",
       "Descripcion": "Refrescante lulada con hielo",
       "Precio": "10000"
+    },
+    {
+      "id": 7,
+      "Nombre": "Pizza Hawaiana",
+      "Descripcion": "Pizza para 3 personas ",
+      "Precio": 25000
     }
   ],
   "Ventas": [
