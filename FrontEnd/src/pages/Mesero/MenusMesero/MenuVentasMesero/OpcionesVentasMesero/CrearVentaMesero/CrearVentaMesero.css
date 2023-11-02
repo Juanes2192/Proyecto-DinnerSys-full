@@ -1,35 +1,71 @@
-/* Asegúrate de que los nombres de clases coincidan con el componente */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+
+
 .form-ventas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .create-ventas-form {
-    width: 300px;
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  .create-ventas-form h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .create-ventas-form Button {
-    background-color: #8B4513;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  
-  .create-ventas-form Button:hover {
-    background-color: #A0522D;
-  }
-  
+  text-align: center;
+}
+
+.create-ventas-form {
+  background-color: #f5f5f5; 
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 20px; 
+}
+
+.create-ventas-form h1 {
+  font-size: 24px;
+}
+
+.create-ventas-form label {
+  display: block;
+  margin-top: 10px;
+}
+
+.create-ventas-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.create-ventas-form button {
+  background-color: #964B00; 
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.create-ventas-form button:hover {
+  background-color: #A76933; 
+}
+
+
+.formlstProductos {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.Linealh2 {
+  font-size: 18px;
+  text-align: center;
+}
+
+.carrusel-pedidos label {
+  display: flex;
+  align-items: center; 
+  margin-top: 10px;
+}
+
+.carrusel-pedidos input[type="checkbox"] {
+  margin-left: 10px; 
+}
