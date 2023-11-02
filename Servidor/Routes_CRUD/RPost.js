@@ -38,13 +38,13 @@ router.post('/Usuarios/CrearUsuario', (req, res) => {
             console.log(newUsuario);
             datosDB.Usuarios.push(newUsuario);
             actualizarBDJSON(datosDB);
-            res.status(201).json(correcto('Administrador'));
+            res.status(201).json(correcto('Administrador',newUsuario));
 
         } else if (newUsuario.Rol === "Mesero") {
             console.log(newUsuario);
             datosDB.Usuarios.push(newUsuario);
             actualizarBDJSON(datosDB);
-            res.status(201).json(correcto('Mesero'));
+            res.status(201).json(correcto('Mesero',newUsuario));
         }
     }
 
@@ -54,6 +54,7 @@ router.post('/Usuarios/CrearUsuario', (req, res) => {
 router.post('/Productos/CrearProducto', (req, res) => {
     let newProducto = req.body;
     const datosDB = leerBDJSON();
+    
     newProducto = {
         id: asignarId(datosDB.Productos, 'id'),
         ...newProducto

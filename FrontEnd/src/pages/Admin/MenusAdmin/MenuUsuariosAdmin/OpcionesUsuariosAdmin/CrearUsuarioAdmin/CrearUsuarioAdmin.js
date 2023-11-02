@@ -14,14 +14,13 @@ export function CrearUsuarioAdmin() {
         validationSchema: validationSchema(),
         onSubmit: (formValue) => {
             console.log("Usuario ok");
-            console.log(formValue);
-            let data = {
+            // console.log(formValue);
+            let newUser = {
                 Nombre: formValue.nombre + " " + formValue.apellido,
                 Rol: formValue.rol
             }
-            // console.log(data);
 
-            axios.post(`${BASE_API}/Usuarios/CrearUsuario`, data)
+            axios.post(`${BASE_API}/Usuarios/CrearUsuario`, newUser)
                 .then((response) => {
                     console.log(response.data);
                 })

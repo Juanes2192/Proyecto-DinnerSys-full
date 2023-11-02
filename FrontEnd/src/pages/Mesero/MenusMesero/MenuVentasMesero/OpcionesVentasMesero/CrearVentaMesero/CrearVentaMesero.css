@@ -1,71 +1,107 @@
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; 
 }
 
-
-.form-ventas {
+.formCrearVenta,
+.formlstProductos {
+  position: absolute;
+  border: 3px solid gray;
+  border-radius: 25px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   text-align: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 25px;
+  width: 20%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-.create-ventas-form {
-  background-color: #f5f5f5; 
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-right: 20px; 
+.formCrearVenta{
+  left: 25%;
 }
 
-.create-ventas-form h1 {
+.formlstProductos{
+  margin-left: 35%;
+  height: 50%;
+}
+
+.formCrearVenta h1 {
   font-size: 24px;
 }
 
-.create-ventas-form label {
+.formCrearVenta label {
   display: block;
   margin-top: 10px;
 }
 
-.create-ventas-form input {
+.formCrearVenta input {
   width: 100%;
   padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  outline: none;
   margin-top: 5px;
 }
 
-.create-ventas-form button {
-  background-color: #964B00; 
+.formCrearVenta button {
+  background-color: #964B00;
   color: #fff;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
-
 }
 
-.create-ventas-form button:hover {
-  background-color: #A76933; 
+.formCrearVenta button:hover {
+  background-color: #522a01;
 }
 
-
-.formlstProductos {
-  background-color: #f5f5f5;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.formlstProductos .carrusel-pedidos {
+  font-size: 16px;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid rgba(222, 184, 135, .4);
+  background-color: rgba(222, 184, 135, 0.064);
+  border-radius: 10px;
+  padding: 10px 15px;
+  max-height: 60%;
+  width: 86%;
+  margin: 0 auto;
+  text-align: left;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-.Linealh2 {
-  font-size: 18px;
-  text-align: center;
-}
-
-.carrusel-pedidos label {
+.formlstProductos .contenedor-input-formProductos{
   display: flex;
-  align-items: center; 
-  margin-top: 10px;
+  align-items: center;
 }
 
-.carrusel-pedidos input[type="checkbox"] {
-  margin-left: 10px; 
+.formlstProductos .carrusel-pedidos label {
+  display: inline;
+  flex: 1;
+  border: 3px solid burlywood;
+  border-radius: 15px;
+  padding: 8px;
+  transition: all .3s;
+}
+
+.formlstProductos .carrusel-pedidos input[type="checkbox"] {
+  display: none;
+}
+
+.formlstProductos .carrusel-pedidos label:hover {
+  cursor: pointer;
+  background-color: rgba(222, 184, 135, 0.3);
+  transform: scale(1.05);
+}
+
+.formlstProductos .carrusel-pedidos input[type="checkbox"]:checked + label{
+  background-color: rgba(222, 184, 135, 0.6);
 }
