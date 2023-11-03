@@ -1,6 +1,6 @@
 const express = require('express');
 const DataDB = require('../db/Datos.json');
-
+const relacionProductoYMesero = require('./FuncionesGet');
 const router = express.Router();
 
 
@@ -47,8 +47,14 @@ router.get("/Productos/MostrarProductos", (req, res) => {
 // GET VENTAS
 // Traer Todas las ventas
 router.get("/Ventas/MostrarVentas", (req, res) => {
-    
-    res.status(200).json(Ventas);
+    let precio=0;
+
+    const ventasConDetalles = Ventas.map((venta) => ({
+        ...venta,
+        MeseroEncargado: relacionProductoYMesero.getNombreMesero(venta.MeseroId),
+        lstProductos: relacionProductoYMesero.getNombresProductos(venta.ProductosIds),
+      }));
+      res.status(200).json(ventasConDetalles);
 });
 
 // Traer Todas las ventas por mesero

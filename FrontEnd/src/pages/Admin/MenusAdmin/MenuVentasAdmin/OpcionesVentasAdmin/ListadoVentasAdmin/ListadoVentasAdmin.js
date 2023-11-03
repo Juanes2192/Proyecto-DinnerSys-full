@@ -23,7 +23,7 @@ export function ListadoVentasAdmin() {
         <ul>
           {lstVentas.map((venta)=> 
           <div key={venta.id}>
-            <li> {venta.IdMesero} <br/> {venta.ProductosIds} </li>
+            <li> {venta.MeseroEncargado} <br/> {venta.lstProductos} </li>
           </div>
           )}
         </ul>

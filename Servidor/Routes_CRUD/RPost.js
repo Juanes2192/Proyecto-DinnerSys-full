@@ -54,9 +54,10 @@ router.post('/Usuarios/CrearUsuario', (req, res) => {
 router.post('/Productos/CrearProducto', (req, res) => {
     let newProducto = req.body;
     const datosDB = leerBDJSON();
-    
+
     newProducto = {
         id: asignarId(datosDB.Productos, 'id'),
+        Precio: parseInt(newProducto.Precio),
         ...newProducto
     }
 
@@ -87,7 +88,7 @@ router.post('/Ventas/CrearVenta', (req, res) => {
 
     console.log(Object.keys(newVenta).length);
 
-    if (Object.keys(newVenta).length > 0 && Object.keys(newVenta).length < 4 ) {
+    if (Object.keys(newVenta).length > 0 && Object.keys(newVenta).length <= 6 ) {
         if (newVenta.MeseroId !== "") {
             //Verificamos si el mesero existe:
             const isMeseroExists = datosDB.Usuarios.find((meseroId) => meseroId.id === newVenta.MeseroId);

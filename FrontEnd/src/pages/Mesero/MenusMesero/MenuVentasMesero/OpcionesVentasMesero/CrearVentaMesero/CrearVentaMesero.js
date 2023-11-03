@@ -13,7 +13,6 @@ export function CrearVentaMesero() {
     useEffect(() => {
         axios.get(`${BASE_API}/Productos/MostrarProductos`)
             .then((response)=>{
-                console.log(response.data);
                 setLstProductos(response.data);
             })
             .catch((error)=>{
@@ -26,7 +25,24 @@ export function CrearVentaMesero() {
         validationSchema: validationSchema(),
         onSubmit: (formValue) => {
             console.log("Producto creado");
-            console.log(formValue);
+            // console.log(formValue);
+
+            const newVenta = {
+                MeseroId: 2,
+                NombreCliente: formValue.nombreCliente,
+                CantidadClientes: formValue.cantidadCliente,
+                ProductosIds: ProductoSeleccionado,
+                PrecioTotal: PrecioTotal
+            }
+
+            axios.post(`${BASE_API}/Ventas/CrearVenta`, newVenta)
+                .then((response)=>{
+                    console.log(response.status);
+                    console.log(response.data);
+                })
+                .catch((error)=>{
+                    console.log("Error al crear la venta: ", error);
+                })
         }
     });
 
@@ -71,7 +87,7 @@ export function CrearVentaMesero() {
                         value={formik.values.cantidadCliente}
                         onChange={formik.handleChange}
                     />
-                    {formik.errors.cantidadCliente && <div className="error">{formik.errors.cantidadCliente}</div>}
+                    {formik.errors.cantidadCliente && <span className="error">{formik.errors.cantidadCliente}</span>}
                 </Form.Field>
                 <Form.Field>
                     <label> Precio </label>
@@ -80,6 +96,7 @@ export function CrearVentaMesero() {
                         value={`$ ${PrecioTotal}`}
                         readOnly
                     />
+                    {formik.errors.precio && <span className="error">{formik.errors.precio}</span>}
                 </Form.Field>
                 <br />
                 <button type="submit">Crear Venta</button>
@@ -103,8 +120,7 @@ export function CrearVentaMesero() {
     function initialValues() {
         return {
             nombreCliente: "",
-            cantidadCliente: 0,
-            precio: 0,
+            cantidadCliente: 0
         };
     }
 
@@ -112,7 +128,6 @@ export function CrearVentaMesero() {
         return Yup.object({
             nombreCliente: Yup.string().required("El nombre del cliente es obligatorio"),
             cantidadCliente: Yup.number().required("La cantidad es obligatoria").min(1, "La cantidad debe ser mayor que cero"),
-            precio: Yup.number().required("El precio es obligatorio").min(1, "El precio debe ser mayor que cero"),
         });
     }
 }

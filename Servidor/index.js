@@ -16,6 +16,7 @@ app.use('',RGet);
 app.use('',RPost);
 app.use('',RDelete);
 // app.use('/PUT',RPut);
+
 app.use((req, res) => {
     res.status(404).json({Error: "La ruta no existe"});
 })
