@@ -1,0 +1,12 @@
+/* MenuEstatico.css */
+.custom-button {
+    background-color: #8B4513; /* Color de fondo inicial (marrón) */
+    color: white; /* Color del texto */
+    border: none; /* Elimina el borde */
+    transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
+  }
+  
+  .custom-button.active {
+    background-color: #A0522D; /* Color de fondo al hacer clic (tono más claro de marrón) */
+  }
+  

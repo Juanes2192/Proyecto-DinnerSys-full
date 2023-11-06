@@ -1,7 +1,7 @@
 import React from 'react';
 import "./GlobalLayout.css";
 import { Login } from '../../pages/Login';
-import {MenuEstatico} from "../../components/Admin/MenuEstatico/MenuEstatico"
+import {MenuEstatico} from "../../components/Admin"
 
 
 
@@ -14,7 +14,7 @@ export function GlobalLayout(props) {
 
   return (
     <div>
-        {children}
+      <MenuEstatico>{children}</MenuEstatico>
     </div>
   )
 }
