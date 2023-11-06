@@ -1,6 +1,7 @@
 import React from 'react';
 import "./GlobalLayout.css";
 import { Login } from '../../pages/Login';
+import {MenuEstatico} from "../../components/Admin/MenuEstatico/MenuEstatico"
 
 
 
