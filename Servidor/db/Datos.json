@@ -24,6 +24,11 @@
       "id": 5,
       "Nombre": "Valeria Marin",
       "Rol": "Mesero"
+    },
+    {
+      "id": 6,
+      "Nombre": "Jose Mosquera",
+      "Rol": "Admin"
     }
   ],
   "Productos": [
@@ -61,32 +66,63 @@
       "id": 6,
       "Nombre": "Lulada",
       "Descripcion": "Refrescante lulada con hielo",
-      "Precio": "10000"
+      "Precio": 10000
     },
     {
       "id": 7,
       "Nombre": "Pizza Hawaiana",
       "Descripcion": "Pizza para 3 personas ",
       "Precio": 25000
+    },
+    {
+      "id": 8,
+      "Nombre": "Mangazo",
+      "Descripcion": "Jugo con trozos de mango y en leche",
+      "Precio": 12000
+    },
+    {
+      "id": 9,
+      "Precio": 5000,
+      "Nombre": "Sancocho",
+      "Descripcion": "Sancocho caleño"
     }
   ],
   "Ventas": [
     {
-      "id": 1,
+      "id": 3,
       "MeseroId": 2,
+      "NombreCliente": "Felipe",
+      "CantidadClientes": 2,
       "ProductosIds": [
-        1,
-        2,
-        5
-      ]
+        2
+      ],
+      "PrecioTotal": 2500
     },
     {
-      "id": 2,
+      "id": 4,
       "MeseroId": 2,
+      "NombreCliente": "Marlon",
+      "CantidadClientes": 4,
       "ProductosIds": [
-        2,
+        1,
+        4,
+        8,
+        5,
         6
-      ]
+      ],
+      "PrecioTotal": 85000
+    },
+    {
+      "id": 5,
+      "MeseroId": 2,
+      "NombreCliente": "Jerson",
+      "CantidadClientes": 3,
+      "ProductosIds": [
+        8,
+        7,
+        4
+      ],
+      "PrecioTotal": 45000
     }
   ]
 }
