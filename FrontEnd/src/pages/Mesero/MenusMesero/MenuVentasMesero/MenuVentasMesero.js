@@ -10,7 +10,7 @@ export function MenuVentasMesero() {
   }
 
   function handleListadoVentasClick() {
-    navigate('/mesero/usuarios/listadoventas'); // Ajusta la ruta a la que deseas redirigir para el listado de ventas.
+    navigate('/mesero/ventas/listadoventas'); // Ajusta la ruta a la que deseas redirigir para el listado de ventas.
   }
 
   return (

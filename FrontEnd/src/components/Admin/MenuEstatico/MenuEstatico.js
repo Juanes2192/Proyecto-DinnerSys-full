@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Menu, Image, Dropdown } from 'semantic-ui-react';
 import Logodinnersys from "../../img/Logodinnersys.png";
-import { useNavigate, useLocation } from 'react-router-dom';
-import "./MenuEstatico.css"; // Importa el archivo de CSS personalizado
+import { useNavigate } from 'react-router-dom';
+import "./MenuEstatico.css";
 
 export function MenuEstatico(props) {
   const { children } = props;
@@ -14,11 +14,8 @@ export function MenuEstatico(props) {
   )
 }
 
-function MenuUpp(props) {
-  const {} = props;
+function MenuUpp() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const [activeItem] = useState(location.pathname);
 
   const redirectToCrearUsuario = () => {
     navigate('/admin/usuarios/crearusuarios');
@@ -50,18 +47,14 @@ function MenuUpp(props) {
       <Dropdown item text="Usuarios" icon={false}>
         <Dropdown.Menu>
           <Dropdown.Item
-            name="/admin/usuarios/crearusuarios"
-            active={activeItem === '/admin/usuarios/crearusuarios'}
             onClick={redirectToCrearUsuario}
-            className={`custom-button ${activeItem === '/admin/usuarios/crearusuarios' ? 'active' : ''}`}
+            className={`custom-button`}
           >
             Crear Usuario
           </Dropdown.Item>
           <Dropdown.Item
-            name="/admin/usuarios/listadousuarios"
-            active={activeItem === '/admin/usuarios/listadousuarios'}
             onClick={redirectToListadoUsuarios}
-            className={`custom-button ${activeItem === '/admin/usuarios/listadousuarios' ? 'active' : ''}`}
+            className={`custom-button`}
           >
             Listado de Usuarios
           </Dropdown.Item>
@@ -71,10 +64,8 @@ function MenuUpp(props) {
       <Dropdown item text="Ventas" icon={false}>
         <Dropdown.Menu>
           <Dropdown.Item
-            name="/admin/ventas/listadoventas"
-            active={activeItem === '/admin/ventas/listadoventas'}
             onClick={redirectToListadoVentas}
-            className={`custom-button ${activeItem === '/admin/ventas/listadoventas' ? 'active' : ''}`}
+            className={`custom-button`}
           >
             Listado de Ventas
           </Dropdown.Item>
@@ -84,18 +75,14 @@ function MenuUpp(props) {
       <Dropdown item text="Productos" icon={false}>
         <Dropdown.Menu>
           <Dropdown.Item
-            name="/admin/productos/crearproductos"
-            active={activeItem === '/admin/productos/crearproductos'}
             onClick={redirectToCrearProductos}
-            className={`custom-button ${activeItem === '/admin/productos/crearproductos' ? 'active' : ''}`}
+            className={`custom-button`}
           >
             Crear Productos
           </Dropdown.Item>
           <Dropdown.Item
-            name="/admin/productos/listadoproductos"
-            active={activeItem === '/admin/productos/listadoproductos'}
             onClick={redirectToListadoProductos}
-            className={`custom-button ${activeItem === '/admin/productos/listadoproductos' ? 'active' : ''}`}
+            className={`custom-button`}
           >
             Listado de Productos
           </Dropdown.Item>

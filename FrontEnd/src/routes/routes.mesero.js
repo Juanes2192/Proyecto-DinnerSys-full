@@ -19,7 +19,7 @@ const routesMesero=[
         component:CrearVentaMesero,
     },
     {
-        path:"/mesero/usuarios/listadoventas",
+        path:"/mesero/ventas/listadoventas",
         layout:MeseroLayout,
         component:ListadoVentaMesero,
     },

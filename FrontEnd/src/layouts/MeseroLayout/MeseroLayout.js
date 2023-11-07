@@ -1,6 +1,7 @@
 import React from 'react';
 import "./MeseroLayout.css";
 import { Login } from '../../pages/Login';
+import {MenuEstaticoMesero} from '../../components/Mesero';
 
 
 
@@ -13,7 +14,9 @@ export function MeseroLayout(props) {
 
   return (
     <div>
+      <MenuEstaticoMesero>
         {children}
+      </MenuEstaticoMesero>
     </div>
   )
 }
