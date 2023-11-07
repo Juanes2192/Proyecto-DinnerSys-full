@@ -15,15 +15,10 @@ export function MenuEstatico(props) {
 }
 
 function MenuUpp(props) {
-  const { children } = props;
+  const {} = props;
   const navigate = useNavigate();
   const location = useLocation();
-  const [activeItem, setActiveItem] = useState(location.pathname);
-
-  const handleItemClick = (e, { name }) => {
-    setActiveItem(name);
-    navigate(name);
-  };
+  const [activeItem] = useState(location.pathname);
 
   const redirectToCrearUsuario = () => {
     navigate('/admin/usuarios/crearusuarios');

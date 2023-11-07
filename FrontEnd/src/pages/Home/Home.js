@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 import "./Home.css";
 import Logodinnersys from "../../components/img/Logodinnersys.png";
-import fondoinicio from "../../components/img/fondoinicio.jpg";
+import fondologin from "../../components/img/fondologin.jpg";
 
 
 
@@ -30,7 +30,7 @@ export function Home() {
 
   return (
     <div className='home-container'>
-      <img className='inicio-image' src={fondoinicio} alt="fondo" />
+      <img className='inicio-image' src={fondologin} alt="fondo" />
       <div className="form-container"> {/* Agrega la clase form-container aquí */}
         <form onSubmit={handleSubmit}>
           <div className="logo-container">
