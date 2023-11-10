@@ -1,65 +1,51 @@
-/* ListadoUsuariosAdmin.css */
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* 100% de la altura de la ventana */
-  }
+.container{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
+.Titulo{
+  padding-top: 15%;
+}
 
-.Titulo {
-    text-align: center; /* Centra horizontalmente */
-    margin: 0; /* Elimina el margen superior por defecto */
-    font-family: horizon; 
-  }
+.user-list-container {
+  justify-content: center;
+  margin: 20px;
+  margin-top:50%;
+  width: 50%; /* Ajusta el ancho según tus necesidades */
+  margin: 0 auto; /* Centra el contenedor en la página */
+}
 
-/* Estilo para la lista de usuarios */
 .user-list {
-    list-style: none;
-    padding: 0;
-    width: 500px; /* Ajusta al contenido */
-    margin: 0 auto; /* Centra horizontalmente */
-  }
-  
-  /* Estilo para los elementos de la lista de usuarios */
-  .user-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ccc;
-    padding: 10px;
-  }
-  
-  /* Estilo para el encabezado de la lista */
-  .user-header {
-    background-color: #8B4513; /* Café */
-    color: white;
-    border: 1px solid black;
-  }
-  
-  /* Estilo para las etiquetas "Nombre" y "Rol" */
-  .user-label {
-    flex: 1;
-    text-align: center;
-  }
-  
-  /* Estilo para el nombre de usuario */
-  .user-name {
-    flex: 1;
-    text-align: center;
-  }
-  
-  /* Estilo para el rol de usuario */
-  .user-role {
-    flex: 1;
-    text-align: center;
-  }
-  
-  /* Estilo para las barras grises claras */
-  .user-item:nth-child(even) {
-    background-color: #f2f2f2; /* Gris claro */
-  }
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f2f2f2;
+}
 
+.user-header {
+  text-align: center;
+  background-color: #333;
+  color: white;
+}
 
-  
+.user-label {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.user-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.user-item:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.user-item:nth-child(odd) {
+  background-color: #fff;
+}
+
+.user-item div {
+  padding: 10px;
+}

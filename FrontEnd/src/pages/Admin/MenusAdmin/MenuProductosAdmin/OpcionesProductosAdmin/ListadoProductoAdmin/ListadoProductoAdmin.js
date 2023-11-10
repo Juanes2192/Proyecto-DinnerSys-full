@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import "./ListadoProductoAdmin.css";
-import { BASE_API } from '../../../../../../utils/constants';
-import axios from 'axios';
+import { MostrarProductos } from '../../../../../../API/DinnersysAPI';
 
 export function ListadoProductoAdmin() {
   const [lstProductos, setLstProductos] = useState([]);
 
   useEffect(() => {
-    axios.get(`${BASE_API}/Productos/MostrarProductos`)
+    MostrarProductos()
       .then((response) => {
-        console.log(response.data);
-        setLstProductos(response.data);
+        console.log(response);
+        setLstProductos(response);
       })
       .catch((error) => {
         console.error("Error al traer los productos: ", error);
@@ -27,10 +26,11 @@ export function ListadoProductoAdmin() {
           <span className="product-label">Precio</span>
         </li>
         {lstProductos.map((producto) => (
-          <div key={producto.id} className="ListadoProductoAdmin-item"> {/* Agregamos la clase al elemento */}
+          <div key={producto.ProductoId} className="ListadoProductoAdmin-item"> {/* Agregamos la clase al elemento */}
             <ul>
               <li className="ListadoProductoAdmin-name">{producto.Nombre}</li> {/* Agregamos la clase al nombre */}
               <li className="ListadoProductoAdmin-description">{producto.Descripcion}</li> {/* Agregamos la clase a la descripción */}
+              <li className="ListadoProductoAdmin-name">{producto.Categoria}</li>
               <li className="ListadoProductoAdmin-price">{producto.Precio}</li> {/* Agregamos la clase al precio */}
             </ul>
           </div>

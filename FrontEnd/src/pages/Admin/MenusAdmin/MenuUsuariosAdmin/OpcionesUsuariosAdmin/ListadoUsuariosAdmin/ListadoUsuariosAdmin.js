@@ -1,41 +1,50 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import "./ListadoUsuariosAdmin.css"
-import axios from 'axios';
-import { BASE_API } from '../../../../../../utils/constants';
+import { MostrarUsuarios } from '../../../../../../API/DinnersysAPI';
 
 export function ListadoUsuariosAdmin() {
 
-  const [data, setData] = useState([]);
+  const [lstUsuarios, setLstUsuarios] = useState([]);
 
   useEffect(() => {
-    axios.get(`${BASE_API}/Usuarios/MostrarUsuarios`)
+
+    MostrarUsuarios() 
       .then((response) => {
-        console.log(response.data);
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error al traer datos: ", error);
-      })
-  }, [])
+        //Si trae una respuesta, envie esa respuesta (data) a la variable lstUsuarios
+        setLstUsuarios(response)
+      }).catch((error) => {
+        console.log("Error al traer los usuarios", error);
+      });
+
+  }, []);
 
   return (
     <div className="container">
-    <h1 className='Titulo'>Listado de Usuarios</h1>
-    <div className="user-list-container">
-      <ul className="user-list">
-        <li className="user-item user-header">
-          <span className="user-label">Nombre</span>
-          <span className="user-label">Rol</span>
-        </li>
-        {data.map((user) => (
-          <li key={user.id} className="user-item">
-            <div className="user-name">{user.Nombre}</div>
-            <div className="user-role">{user.Rol}</div>
-          </li>
-        ))}
-      </ul>
+      <div className="user-list-container">
+        <h1 className='Titulo'>Listado de Usuarios</h1>
+        <table className="user-list">
+          <thead>
+            <tr className="user-header">
+              <th className="user-label">Cedula</th>
+              <th className="user-label">Nombres</th>
+              <th className="user-label">Apellidos</th>
+              <th className="user-label">Tipo Usuario</th>
+            </tr>
+          </thead>
+          <tbody>
+            {lstUsuarios.map((user)=>(
+              <tr className='' key={user.usuarioId}>
+                <td> {user.Cedula} </td>
+                <td> {user.Nombres} </td>
+                <td> {user.Apellidos} </td>
+                <td> {user.TipoUsuario} </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
     </div>
-  </div>
   );
 }
 
