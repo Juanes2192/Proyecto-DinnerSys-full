@@ -1,51 +1,53 @@
-.container{
+/* Estilo para el contenedor principal */
+.container {
+  display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
-.Titulo{
-  padding-top: 15%;
-}
-
+/* Estilo para el contenedor de la lista de usuarios */
 .user-list-container {
-  justify-content: center;
-  margin: 20px;
-  margin-top:50%;
-  width: 50%; /* Ajusta el ancho según tus necesidades */
-  margin: 0 auto; /* Centra el contenedor en la página */
+  margin-top: 20px;
+  width: 100%; /* Hacer que ocupe todo el ancho */
 }
 
+/* Estilo para el título del listado de usuarios */
+.Titulo {
+  text-align: center; /* Centra horizontalmente */
+  margin: 0; /* Elimina el margen superior por defecto */
+  font-size: 24px; /* Tamaño del título */
+}
+
+/* Estilo para la tabla de usuarios */
 .user-list {
-  width: 100%;
+  width: 100%; /* Ocupar todo el ancho de su contenedor */
   border-collapse: collapse;
-  background-color: #f2f2f2;
+  margin-top: 10px;
 }
 
+/* Estilo para los encabezados de la tabla */
 .user-header {
-  text-align: center;
   background-color: #333;
   color: white;
 }
 
+/* Estilo para las etiquetas de los usuarios */
 .user-label {
   padding: 10px;
-  text-align: center;
-  font-weight: bold;
+  text-align: left;
 }
 
-.user-item {
+/* Estilo para las filas de la tabla */
+.user-list tbody tr {
   border-bottom: 1px solid #ddd;
 }
 
-.user-item:nth-child(even) {
-  background-color: #f2f2f2;
+/* Estilo para las filas pares de la tabla */
+.user-list tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Gris claro */
 }
 
-.user-item:nth-child(odd) {
-  background-color: #fff;
-}
-
-.user-item div {
+/* Estilo para el contenido de las celdas */
+.user-list tbody td {
   padding: 10px;
 }

@@ -2,11 +2,13 @@ import React from 'react';
 import { Form, Input, Button } from 'semantic-ui-react';
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from 'axios'; //Libreria para hacer conexiones
 import "./CrearProductoAdmin.css";
-import { BASE_API } from '../../../../../../utils/constants';
+import { useNavigate } from 'react-router-dom';
+import { CrearProducto } from '../../../../../../API/DinnersysAPI';
 
 export function CrearProductoAdmin() {
+    const navigate = useNavigate();
+
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: validationSchema(),
@@ -16,15 +18,18 @@ export function CrearProductoAdmin() {
             const newProducto = {
                 Nombre: formValue.nombreProducto,
                 Descripcion: formValue.descripcionProducto,
+                Categoria: formValue.categoria,
                 Precio: formValue.precio
             }
-            axios.post(`${BASE_API}/Productos/CrearProducto`, newProducto)
+            CrearProducto(newProducto)
                 .then((response) => {
-                    console.log(response.data);
-                })
-                .catch((error) => {
-                    console.error("Error al crear el producto: ", error);
-                })
+                    alert("Producto creado");
+                    console.log(response);
+                    navigate('/admin'); //Navegamos a la pagina principal del admin
+                }).catch((error) => {
+                    alert("Error al crear el producto", error);
+                    console.log("Error al crear el producto: ", error);
+                });
         }
     });
 
@@ -60,7 +65,7 @@ export function CrearProductoAdmin() {
                         onChange={formik.handleChange}>
                         <option></option>
                         <option value={"Comida"}> Comidas </option>
-                        <option value={"Bebidas"}> Bebidas </option>
+                        <option value={"Bebida"}> Bebidas </option>
                     </select>
                     {formik.errors.categoria && <div className="error">{formik.errors.categoria}</div>}
                 </Form.Field>

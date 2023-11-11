@@ -1,5 +1,7 @@
 import { pool } from '../conexion/conexion.js';
+// import { bcrypt } from 'bcryptjs';
 
+const isNum = new RegExp('^[0-9]+$');
 
 //METODO PARA VERFICAR LAS CREDENCIALES Y DARLE ACCESO AL USUARIO
 //Funcion para obtener las credenciales de un usuario y usarlas en la funcion de loggin, es con un post porque se envia el usuario por el body
@@ -81,16 +83,43 @@ export const getMeseros = async (req, res) => {
 //Funcion para crear un usuario
 export const createUsuario = async (req, res) => {
     console.log("\n\nFuncion: createUsuario()");
+    let { Cedula, Nombres, Apellidos, TipoUsuario } = req.body;
     try {
-        const { Cedula, Nombres, Apellidos, TipoUsuario } = req.body;
         if (Cedula && Nombres && Apellidos && TipoUsuario) {
-            await pool.query('INSERT INTO usuarios (Cedula, Nombres, Apellidos, TipoUsuario) VALUES (?,?,?,?)',
-                [Cedula, Nombres, Apellidos, TipoUsuario]);
-            console.log("Usuario creado correctamente");
-            res.status(200).json('Usuario creado');
+            //Verificamos que el campo Cedula contenga caracteres numericos
+            if (Cedula.match(isNum) != null) { //Si es diferente de null, es porque si es un numero
+
+                //Verificamos que los campos Nombres y Apellidos tengan al menos 3 caracteres
+                if (Nombres.lenght > 3 || Apellidos.lenght > 3) {
+                    //Verificamos que el campo TipoUsuario sea Administrador o Mesero
+                    if (TipoUsuario === "Administrador" || TipoUsuario === "Mesero") {
+                        const isInsert = await pool.query('INSERT INTO usuarios (Cedula, Nombres, Apellidos, TipoUsuario) VALUES (?,?,?,?)',
+                            [Cedula, Nombres, Apellidos, TipoUsuario]);
+                        if (isInsert) {
+                            console.log("Usuario creado correctamente");
+                            res.status(200).json('Usuario creado');
+                        } else {
+                            console.log("No fue posible crear el usuario");
+                            res.status(409).json({ Error: 'No fue posible crear el usuario' });
+                        }
+                    } else { // Error en la variable TipoUsuario ingresado
+                        console.log("El tipo de usuario debe ser o Administrador, o Mesero");
+                        res.status(400).json({ Error: 'El tipo de usuario debe ser o Administrador, o Mesero' });
+                    }
+                } else { // Error en los Nombres o Apellidos ingresados
+                    console.log("Los nombres y apellidos deben tener al menos 3 caracteres");
+                    res.status(400).json({ Error: 'Los nombres y apellidos deben tener al menos 3 caracteres' });
+                }
+
+            } else { // Error en la Cedula ingresada
+                console.log("La cedula no es un numero");
+                res.status(400).json({ Error: 'La cedula debe ser un numero sin puntos ni comas' });
+            }
+
+
         } else {
             console.log("Datos incompletos o ingresados erroneamente");
-            res.status(400).json({ Error: 'Datos incompletos o ingresados erroneamente' });
+            res.status(400).json({ Error: 'Datos incompletos' });
         }
     } catch (error) {
         console.log(error);

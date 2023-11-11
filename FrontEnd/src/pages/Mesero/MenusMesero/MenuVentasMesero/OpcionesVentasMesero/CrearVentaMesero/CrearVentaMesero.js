@@ -5,19 +5,20 @@ import * as Yup from "yup";
 import "./CrearVentaMesero.css";
 import axios from 'axios';
 import { BASE_API } from '../../../../../../utils/constants';
+import { MostrarProductos } from '../../../../../../API/DinnersysAPI';
 
 export function CrearVentaMesero() {
 
     const [lstProductos, setLstProductos] = useState([]);
 
     useEffect(() => {
-        axios.get(`${BASE_API}/Productos/MostrarProductos`)
+        MostrarProductos()
             .then((response)=>{
-                setLstProductos(response.data);
-            })
-            .catch((error)=>{
-                console.log("Error al traer los productos: ", error);
-            })
+                console.log(response);
+                setLstProductos(response);
+            }).catch((error)=>{
+                console.log("Error al obtener los productos: ", error);
+            })  
     }, []);
 
     const formik = useFormik({
@@ -45,7 +46,6 @@ export function CrearVentaMesero() {
                 })
         }
     });
-
 
 
     // Creamos las variables para manipular el Precio y la lista de ids de los productos que se seleccionan
@@ -106,9 +106,9 @@ export function CrearVentaMesero() {
                 <h1 >Listado Productos</h1>
                 <div className="carrusel-pedidos">
                     {lstProductos && lstProductos.map(producto => (
-                        <div className='contenedor-input-formProductos' key={producto.id}>
-                            <input id={`producto${producto.id}`} type='checkbox' onClick={(ev) => getPrecioTotal(producto, ev.target.checked)} />
-                            <label htmlFor={`producto${producto.id}`}>{producto.Nombre}: <span className='precio-producto'> ${producto.Precio} </span></label>
+                        <div className='contenedor-input-formProductos' key={producto.ProductoId}>
+                            <input id={`producto${producto.ProductoId}`} type='checkbox' onClick={(ev) => getPrecioTotal(producto, ev.target.checked)} />
+                            <label htmlFor={`producto${producto.ProductoId}`}>{producto.Nombre}: <span className='precio-producto'> ${producto.Precio} </span></label>
                             <br />
                         </div>
                     ))}

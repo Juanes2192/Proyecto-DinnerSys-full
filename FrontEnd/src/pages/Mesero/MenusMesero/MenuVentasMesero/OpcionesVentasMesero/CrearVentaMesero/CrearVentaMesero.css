@@ -1,7 +1,3 @@
-.container {
-  display: flex;
-}
-
 .formCrearVenta,
 .formlstProductos {
   position: absolute;
@@ -21,7 +17,7 @@
 }
 
 .formCrearVenta{
-  left: 25%;
+  left: 5%;
 }
 
 .formlstProductos{
@@ -58,6 +54,7 @@
 
 .formCrearVenta button:hover {
   background-color: #522a01;
+  top: 200px;
 }
 
 .formlstProductos .carrusel-pedidos {

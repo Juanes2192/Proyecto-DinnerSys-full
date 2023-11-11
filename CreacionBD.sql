@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Usuarios (
 CREATE TABLE IF NOT EXISTS DatosAcceso(
     usuarioId INT NOT NULL,
     Usuario varchar(50) UNIQUE NOT NULL,
-    Contrasena varchar(50) NOT NULL,
+    Contrasena TEXT NOT NULL,
     PRIMARY KEY (usuarioId),
     FOREIGN KEY (usuarioId) REFERENCES Usuarios(usuarioId) ON DELETE CASCADE
 );

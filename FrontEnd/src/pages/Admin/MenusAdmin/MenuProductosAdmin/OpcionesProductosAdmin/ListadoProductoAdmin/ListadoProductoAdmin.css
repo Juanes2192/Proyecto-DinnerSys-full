@@ -1,71 +1,52 @@
-/* ListadoProductoAdmin.css */
-
-/* Estilo para el contenedor principal */
 .ListadoProductoAdmin-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* 100% de la altura de la ventana */
-  }
-  
-  /* Estilo para el título del listado de productos */
-  .ListadoProductoAdmin-titulo {
-    text-align: center; /* Centra horizontalmente */
-    margin: 0; /* Elimina el margen superior por defecto */
-    font-family: 'horizon'; /* Corregido el nombre de la fuente */
-  }
-  
-  /* Estilo para la lista de productos */
-  .ListadoProductoAdmin-list {
-    list-style: none;
-    padding: 0;
-    width: 1000px; /* Ajusta al contenido */
-    margin: 0 auto; /* Centra horizontalmente */
-  }
-  
-  /* Estilo para los elementos de la lista de productos */
-  .ListadoProductoAdmin-item {
-    display: flex;
-    border-bottom: 1px solid #ccc;
-    padding: 10px;
-    justify-content: space-between; /* Espacio entre los elementos en la fila */
-  
-    /* Añadimos un estilo flexbox para los elementos dentro de .ListadoProductoAdmin-item */
-    & ul {
-      display: flex;
-      width: 100%;
-      padding: 0;
-      list-style: none;
-    }
-  
-    /* Estilo para las etiquetas "Nombre", "Descripción" y "Precio" */
-    .ListadoProductoAdmin-label {
-      text-align: center;
-      font-weight: bold; /* Hace que el texto sea negrita */
-    }
-  
-    /* Estilo para el nombre del producto */
-    .ListadoProductoAdmin-name {
-      flex: 1;
-      text-align: left; /* Alinea a la izquierda */
-    }
-  
-    /* Estilo para la descripción del producto */
-    .ListadoProductoAdmin-description {
-      flex: 2;
-      text-align: center; /* Alinea al centro */
-    }
-  
-    /* Estilo para el precio del producto */
-    .ListadoProductoAdmin-price {
-      flex: 1;
-      text-align: right; /* Alinea a la derecha */
-    }
-  
-    /* Estilo para las filas pares de la lista */
-    &:nth-child(even) {
-      background-color: #f2f2f2; /* Gris claro */
-    }
-  }
-  
+  margin: 50px;
+}
+
+.ListadoProductoAdmin-titulo {
+  font-size: 24px;
+  text-align: center;
+  -webkit-text-stroke: 2px black;
+  margin-bottom: 10px;
+}
+
+.ListadoProductoAdmin-table {
+  width: 100%;
+  /* border-collapse: collapse; */
+  margin-top: 10px;
+}
+
+.user-header {
+  background-color: #333;
+  color: white;
+}
+
+.product-label {
+  padding: 10px;
+  text-align: left;
+}
+
+.ListadoProductoAdmin-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.ListadoProductoAdmin-item:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.ListadoProductoAdmin-item:nth-child(odd) {
+  background-color: #fff;
+}
+
+.ListadoProductoAdmin-item td {
+  padding: 10px;
+}
+
+.ListadoProductoAdmin-name,
+.ListadoProductoAdmin-description,
+.ListadoProductoAdmin-category,
+.ListadoProductoAdmin-price {
+  max-width: 150px; /* Ajusta el ancho máximo según tus necesidades */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
