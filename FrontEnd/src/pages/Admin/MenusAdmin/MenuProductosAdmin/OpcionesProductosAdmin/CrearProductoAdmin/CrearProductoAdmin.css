@@ -1,10 +1,11 @@
 .form-productos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  height: 100vh;
+}
+
+
   .create-product-form {
     width: 300px;
     background-color: #fff;
@@ -13,22 +14,16 @@
     border-radius: 5px;
     text-align: center;
   }
-  
-  .create-product-form h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
+
   .create-product-form Button {
-    background-color: #8B4513; 
-    color: #fff;
+    background-color: #8B4513 !important; 
+    color: #fff !important;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
-  }
-  
-  .create-product-form Button:hover {
-    background-color: #A0522D; 
-  }
-  
+}
+
+.create-product-form Button:hover {
+    background-color: #A0522D !important; 
+}
