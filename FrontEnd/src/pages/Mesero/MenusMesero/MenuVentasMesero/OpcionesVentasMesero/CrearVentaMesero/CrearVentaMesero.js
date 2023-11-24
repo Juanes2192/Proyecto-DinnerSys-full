@@ -3,9 +3,8 @@ import { Form, Input, Button } from 'semantic-ui-react';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./CrearVentaMesero.css";
-import axios from 'axios';
-import { BASE_API } from '../../../../../../utils/constants';
-import { MostrarProductos } from '../../../../../../API/DinnersysAPI';
+import { MostrarProductos } from '../../../../../../API/Productos/ProductosAPI';
+
 
 export function CrearVentaMesero() {
 
@@ -36,14 +35,6 @@ export function CrearVentaMesero() {
                 PrecioTotal: PrecioTotal
             }
 
-            axios.post(`${BASE_API}/Ventas/CrearVenta`, newVenta)
-                .then((response)=>{
-                    console.log(response.status);
-                    console.log(response.data);
-                })
-                .catch((error)=>{
-                    console.log("Error al crear la venta: ", error);
-                })
         }
     });
 

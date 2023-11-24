@@ -4,7 +4,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./CrearProductoAdmin.css";
 import { useNavigate } from 'react-router-dom';
-import { CrearProducto } from '../../../../../../API/DinnersysAPI';
+import { CrearProducto } from '../../../../../../API/Productos/ProductosAPI';
+
 
 export function CrearProductoAdmin() {
     const navigate = useNavigate();

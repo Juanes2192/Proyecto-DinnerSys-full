@@ -21,7 +21,7 @@
 /* Estilo para la tabla de usuarios */
 .user-list {
   width: 100%; /* Ocupar todo el ancho de su contenedor */
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
   margin-top: 10px;
 }
 

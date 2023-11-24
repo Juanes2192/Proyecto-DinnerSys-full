@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import "./ListadoProductoAdmin.css";
-import { MostrarProductos } from '../../../../../../API/DinnersysAPI';
+import { MostrarProductos } from '../../../../../../API/Productos/ProductosAPI';
 
 export function ListadoProductoAdmin() {
   const [lstProductos, setLstProductos] = useState([]);

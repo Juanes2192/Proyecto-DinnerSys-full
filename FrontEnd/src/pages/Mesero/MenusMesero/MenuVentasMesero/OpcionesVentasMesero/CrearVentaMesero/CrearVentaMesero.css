@@ -1,3 +1,7 @@
+.container{
+  display: block;
+}
+
 .formCrearVenta,
 .formlstProductos {
   position: absolute;

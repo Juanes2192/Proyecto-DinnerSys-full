@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import "./ListadoUsuariosAdmin.css"
-import { MostrarUsuarios } from '../../../../../../API/DinnersysAPI';
+import { MostrarUsuarios } from '../../../../../../API/Usuarios/UsuariosAPI.js';
 
 export function ListadoUsuariosAdmin() {
 

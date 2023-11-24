@@ -2,10 +2,9 @@ import React from 'react';
 import { Form, Input, Button } from 'semantic-ui-react';
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { CrearUsuario } from "../../../../../../API/Usuarios/UsuariosAPI.js";
 import "./CrearUsuarioAdmin.css";
 import "../../../../../../App.css";
-import axios  from 'axios';
-import { BASE_API } from '../../../../../../utils/constants';
 
 export function CrearUsuarioAdmin() {
 
@@ -14,19 +13,15 @@ export function CrearUsuarioAdmin() {
         validationSchema: validationSchema(),
         onSubmit: (formValue) => {
             console.log("Usuario ok");
-            // console.log(formValue);
-            let newUser = {
-                Nombre: formValue.nombre + " " + formValue.apellido,
-                Rol: formValue.rol
-            }
+            console.log(formValue);
 
-            axios.post(`${BASE_API}/Usuarios/CrearUsuario`, newUser)
-                .then((response) => {
-                    console.log(response.data);
-                })
-                .catch((error)=>{
-                    console.error('error: ', error);
-                })
+            CrearUsuario(formValue).then((response) => {
+                console.log(response);
+                console.log("Usuario creado correctamente");
+                alert("Usuario creado correctamente");
+            }).catch((error) => {
+                console.log("Error al crear el usuario", error);
+            });   
         }
     });
 
@@ -35,55 +30,44 @@ export function CrearUsuarioAdmin() {
             <Form className='login-form-admin' onSubmit={formik.handleSubmit}>
                 <h1>Crear Usuario</h1>
                 <Form.Field>
-                    <label>Nombre usuario</label>
+                    <label>Cedula</label>
                     <Input
-                        name="nombre"
-                        placeholder="Nombre usuario"
-                        value={formik.values.nombre}
+                        name="Cedula"
+                        placeholder="Cedula"
+                        value={formik.values.Cedula}
                         onChange={formik.handleChange}
                     />
-                    {formik.errors.nombre && <span className="error">{formik.errors.nombre}</span>}
+                    {formik.errors.Cedula && <span className="error">{formik.errors.Cedula}</span>}
+                </Form.Field>
+                <Form.Field>
+                    <label>Nombre usuario</label>
+                    <Input
+                        name="Nombres"
+                        placeholder="Nombre usuario"
+                        value={formik.values.Nombres}
+                        onChange={formik.handleChange}
+                    />
+                    {formik.errors.Nombres && <span className="error">{formik.errors.Nombres}</span>}
                 </Form.Field>
                 <Form.Field>
                     <label>Apellido usuario</label>
                     <Input
-                        name="apellido"
+                        name="Apellidos"
                         placeholder="Apellido usuario"
-                        value={formik.values.apellido}
+                        value={formik.values.Apellidos}
                         onChange={formik.handleChange}
                     />
-                    {formik.errors.apellido && <span className="error">{formik.errors.apellido}</span>}
-                </Form.Field>
-                <Form.Field>
-                    <label>Correo electrónico</label>
-                    <Input
-                        name="email"
-                        placeholder="Correo electrónico"
-                        value={formik.values.email}
-                        onChange={formik.handleChange}
-                    />
-                    {formik.errors.email && <span className="error">{formik.errors.email}</span>}
+                    {formik.errors.Apellidos && <span className="error">{formik.errors.Apellidos}</span>}
                 </Form.Field>
                 <Form.Field>
                     <label>Rol usuario</label>
                     <Input
-                        name="rol"
+                        name="TipoUsuario"
                         placeholder="Rol usuario"
-                        value={formik.values.rol}
+                        value={formik.values.TipoUsuario}
                         onChange={formik.handleChange}
                     />
-                    {formik.errors.rol && <span className="error">{formik.errors.rol}</span>}
-                </Form.Field>
-                <Form.Field>
-                    <label>Contraseña</label>
-                    <Input
-                        name="password"
-                        type='password'
-                        placeholder="Contraseña"
-                        value={formik.values.password}
-                        onChange={formik.handleChange}
-                    />
-                    {formik.errors.password && <span className="error">{formik.errors.password}</span>}
+                    {formik.errors.TipoUsuario && <span className="error">{formik.errors.TipoUsuario}</span>}
                 </Form.Field>
                 <Button type="submit">Registrar Usuario</Button>
             </Form>
@@ -92,21 +76,19 @@ export function CrearUsuarioAdmin() {
 
     function initialValues() {
         return {
-            nombre: "",
-            apellido: "",
-            email: "",
-            rol: "",
-            password: ""
+            Nombres: "",
+            Apellidos: "",
+            Cedula: "",
+            TipoUsuario: ""
         };
     }
 
     function validationSchema() {
         return Yup.object({
-            nombre: Yup.string().required("El nombre es obligatorio"),
-            apellido: Yup.string().required("El apellido es obligatorio"),
-            email: Yup.string().email("Correo electrónico no válido").required("El correo electrónico es obligatorio"),
-            rol: Yup.string().required("El rol es obligatorio"),
-            password: Yup.string().required("La contraseña es obligatoria"),
+            Nombres: Yup.string().required("El nombre es obligatorio"),
+            Apellidos: Yup.string().required("El apellido es obligatorio"),
+            Cedula: Yup.string().required("La cedula es obligatoria"),
+            TipoUsuario: Yup.string().required("El rol es obligatorio")
         });
     }
 }
