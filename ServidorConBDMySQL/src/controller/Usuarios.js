@@ -70,7 +70,7 @@ export const getUsuarioById = async (req, res) => {
 export const getMeseros = async (req, res) => {
     console.log("\n\nFuncion: getMeseros()");
     try {
-        const Meseros = await pool.query('SELECT * FROM usuarios WHERE TipoUsuario = "Mesero"');
+        const Meseros = await pool.query('SELECT * FROM usuarios WHERE LOWER(TipoUsuario) = "mesero"');
         console.log(Meseros);
         res.status(200).json(Meseros);
     } catch (error) {
@@ -90,9 +90,10 @@ export const createUsuario = async (req, res) => {
             if (Cedula.match(isNum) != null) { //Si es diferente de null, es porque si es un numero
 
                 //Verificamos que los campos Nombres y Apellidos tengan al menos 3 caracteres
-                if (Nombres.lenght > 3 || Apellidos.lenght > 3) {
+                if (Nombres.length > 3 || Apellidos.length > 3) {
+                    TipoUsuario = TipoUsuario.toLowerCase();
                     //Verificamos que el campo TipoUsuario sea Administrador o Mesero
-                    if (TipoUsuario === "Administrador" || TipoUsuario === "Mesero") {
+                    if (TipoUsuario === "administrador" || TipoUsuario === "mesero") {
                         const isInsert = await pool.query('INSERT INTO usuarios (Cedula, Nombres, Apellidos, TipoUsuario) VALUES (?,?,?,?)',
                             [Cedula, Nombres, Apellidos, TipoUsuario]);
                         if (isInsert) {

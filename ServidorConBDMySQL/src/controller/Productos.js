@@ -53,7 +53,7 @@ export const createProducto = async (req, res) => {
         // Verificar si alguno de los campos esta vacío
         if (Nombre && Descripcion && Precio && Categoria) {
 
-            // Verificar que el Precio sea un numero positivo
+            // Verificar que el Precio sea mayor a 100
             if (Precio >= 100) {
                 // Verificar si la categoría es "Comida" o "Bebida"
                 if (Categoria === "Comida" || Categoria === "Bebida") {
