@@ -9,6 +9,7 @@ const routesAdmin=[
         layout: GlobalLayout,
         component: HomeAdmin,
     },
+    //Empieza ruta de USUARIOS
     {
         path:"/admin/usuarios",
         layout:GlobalLayout,
@@ -24,6 +25,7 @@ const routesAdmin=[
         layout:GlobalLayout,
         component:ListadoUsuariosAdmin,
     },
+    //Empieza ruta de PRODUCTOS
     {
         path:"/admin/productos",
         layout:GlobalLayout,
@@ -39,6 +41,12 @@ const routesAdmin=[
         layout:GlobalLayout,
         component:CrearProductoAdmin,
     },
+    {
+        path:"/admin/productos/editarproductos",
+        layout:GlobalLayout,
+        component:CrearProductoAdmin,
+    },
+    //Empieza ruta de VENTAS
     {
         path:"/admin/ventas",
         layout:GlobalLayout,

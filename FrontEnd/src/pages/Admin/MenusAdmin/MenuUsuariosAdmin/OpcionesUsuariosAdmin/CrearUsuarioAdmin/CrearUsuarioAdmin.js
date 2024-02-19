@@ -1,27 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Input, Button } from 'semantic-ui-react';
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { CrearUsuario } from "../../../../../../API/Usuarios/UsuariosAPI.js";
 import "./CrearUsuarioAdmin.css";
 import "../../../../../../App.css";
+import { NuevoUsuario } from '../../../../../../API/Usuarios/UsuariosAPI';
+import { useNavigate } from 'react-router-dom';
 
 export function CrearUsuarioAdmin() {
 
+    const navigate = useNavigate();
+
     const formik = useFormik({
+
         initialValues: initialValues(),
         validationSchema: validationSchema(),
-        onSubmit: (formValue) => {
+        onSubmit: (usuario) => {
             console.log("Usuario ok");
-            console.log(formValue);
+            console.log(usuario);
 
-            CrearUsuario(formValue).then((response) => {
-                console.log(response);
-                console.log("Usuario creado correctamente");
-                alert("Usuario creado correctamente");
-            }).catch((error) => {
-                console.log("Error al crear el usuario", error);
-            });   
+            NuevoUsuario(usuario)
+                .then((response) => {
+                    if (response) {
+                        alert("Se creo el usuario");
+                        navigate('/admin/usuarios/listadousuarios'); //Navegamos a la lista de usuarios
+                    } else {
+                        alert("No fue posible crear el usuario");
+                    }
+                })
         }
     });
 

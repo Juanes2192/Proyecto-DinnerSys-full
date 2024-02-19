@@ -61,7 +61,7 @@ export const createProducto = async (req, res) => {
                         [Nombre, Descripcion, Precio, Categoria]);
                     if(isInsert.affectedRows === 1){//Si se inserto correctamente
                         console.log("Producto creado correctamente");
-                        res.status(200).json({ mensaje: 'Producto creado correctamente' });
+                        res.status(201).json({ mensaje: 'Producto creado correctamente' });
                     }else{
                         console.log("Error al crear el producto");
                         res.status(500).json({ error: 'Error al crear el producto' });
@@ -99,10 +99,10 @@ export const updateProducto = async (req, res) => {
                 const isUpdate = await pool.query('UPDATE Productos SET Nombre = COALESCE(?, Nombre), Descripcion = COALESCE(?, Descripcion), '+
                     'Precio = COALESCE(?, Precio), Categoria = COALESCE(?, Categoria) WHERE ProductoId = ?', 
                     [Nombre, Descripcion, Precio, Categoria, ProductoId]);
-                
+                console.log("isUpdate: ", isUpdate);
                 if(isUpdate.affectedRows === 1){//Si se actualizo correctamente
                     console.log("Producto actualizado correctamente");
-                    res.status(200).json({ mensaje: 'Producto actualizado correctamente' });
+                    res.status(201).json({ mensaje: 'Producto actualizado correctamente' });
                 }else{
                     console.log("El producto a actualizar no existe");
                     res.status(404).json({ error: 'El producto a actualizar no existe' });

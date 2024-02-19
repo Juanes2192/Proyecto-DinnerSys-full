@@ -83,7 +83,9 @@ export const getMeseros = async (req, res) => {
 //Funcion para crear un usuario
 export const createUsuario = async (req, res) => {
     console.log("\n\nFuncion: createUsuario()");
+
     let { Cedula, Nombres, Apellidos, TipoUsuario } = req.body;
+
     try {
         if (Cedula && Nombres && Apellidos && TipoUsuario) {
             //Verificamos que el campo Cedula contenga caracteres numericos
@@ -96,9 +98,9 @@ export const createUsuario = async (req, res) => {
                     if (TipoUsuario === "administrador" || TipoUsuario === "mesero") {
                         const isInsert = await pool.query('INSERT INTO usuarios (Cedula, Nombres, Apellidos, TipoUsuario) VALUES (?,?,?,?)',
                             [Cedula, Nombres, Apellidos, TipoUsuario]);
-                        if (isInsert) {
+                        if (isInsert.affectedRows === 1) {
                             console.log("Usuario creado correctamente");
-                            res.status(200).json('Usuario creado');
+                            res.status(201).json('Usuario creado');
                         } else {
                             console.log("No fue posible crear el usuario");
                             res.status(409).json({ Error: 'No fue posible crear el usuario' });
@@ -146,7 +148,7 @@ export const updateUsuario = async (req, res) => {
                 res.status(200).json({ Message: 'Usuario actualizado correctamente' });
             } else {
                 console.log("No fue posible actualizar el usuario porque NO existe");
-                res.status(400).json({ Error: `El usuario con el id ${UsuarioId} no existe` });
+                res.status(404).json({ Error: `El usuario con el id ${UsuarioId} no existe` });
             }
         } else {
             console.log("No se recibieron datos");
@@ -177,8 +179,14 @@ export const deleteUsuario = async (req, res) => {
     }
 }
 
-/* 
-Puedes explicarme lo que hace este archivo? dime si o no
-
-
+/*
+Este archivo es el controlador de la tabla usuarios, se encarga de hacer las peticiones a la base de datos y devolver la respuesta al cliente.
+Las funciones que tiene son:
+- verificarCredenciales: Verifica que el usuario y la contraseña sean correctos
+- getUsuarios: Obtiene todos los usuarios
+- getUsuarioById: Obtiene un usuario por su id
+- getMeseros: Obtiene todos los meseros
+- createUsuario: Crea un usuario
+- updateUsuario: Actualiza un usuario
+- deleteUsuario: Elimina un usuario
 */

@@ -3,41 +3,67 @@ import { Form, Input, Button } from 'semantic-ui-react';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./CrearProductoAdmin.css";
-import { useNavigate } from 'react-router-dom';
-import { CrearProducto } from '../../../../../../API/Productos/ProductosAPI';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { CrearProducto, EditarProducto } from '../../../../../../API/Productos/ProductosAPI';
 
 
 export function CrearProductoAdmin() {
+    const Location = useLocation();
+    const titulo = Location.state ? Location.state.titulo : "Crear Producto";
+    const prop_producto = Location.state ? Location.state.data : null;
+    //Esta variable llega desde el componente ListadoProductoAdmin que es donde se cargan todos los productos
+
     const navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: validationSchema(),
         onSubmit: (formValue) => {
-            console.log("Producto creado");
+            // console.log("Producto creado");
             console.log(formValue);
+            //Creamos un objeto que contendrá los datos del producto
+            //Los nombres de los campos son iguales que en la base de datos
             const newProducto = {
                 Nombre: formValue.nombreProducto,
                 Descripcion: formValue.descripcionProducto,
                 Categoria: formValue.categoria,
                 Precio: formValue.precio
             }
-            CrearProducto(newProducto)
-                .then((response) => {
-                    alert("Producto creado");
-                    console.log(response);
-                    navigate('/admin'); //Navegamos a la pagina principal del admin
-                }).catch((error) => {
-                    alert("Error al crear el producto", error);
-                    console.log("Error al crear el producto: ", error);
-                });
+            //Aqui va la llamada a la API para enviar el producto
+            if (prop_producto === null) {
+                // Si prop_producto es null, significa que no nos llega ningun producto, por lo que estamos creando un producto
+                CrearProducto(newProducto)
+                    .then((response) => {
+                        if(response !== null){
+                            alert("Producto creado");
+                            console.log(response);
+                            navigate('/admin/productos/listadoproductos'); //Navegamos a la pagina principal del admin
+                        }else{
+                            alert("Error al crear el producto");
+                        }
+                    })
+            }else{
+                // Si no, significa que nos llega un producto, por lo que estamos editando un producto
+                EditarProducto(prop_producto.ProductoId, newProducto)
+                    .then((response)=>{
+                        if(response !== null){
+                            alert("Producto editado");
+                            console.log(response);
+                            navigate('/admin/productos/listadoproductos'); //Navegamos a la pagina principal del admin
+                        }else{
+                            alert("Error al editar el producto");
+                        }
+                    
+                    })
+            
+            }
         }
     });
 
     return (
         <div className='form-productos'>
             <Form className='create-product-form' onSubmit={formik.handleSubmit}>
-                <h1>Crear Producto</h1>
+                <h1> {titulo} </h1>
                 <Form.Field>
                     <label>Nombre del Producto</label>
                     <Input
@@ -81,17 +107,17 @@ export function CrearProductoAdmin() {
                     />
                     {formik.errors.precio && <div className="error">{formik.errors.precio}</div>}
                 </Form.Field>
-                <Button type="submit">Crear Producto</Button>
+                <Button type="submit"> {titulo} </Button>
             </Form>
         </div>
     );
 
     function initialValues() {
         return {
-            nombreProducto: "",
-            descripcionProducto: "",
-            categoria: "",
-            precio: 0,
+            nombreProducto: prop_producto ? prop_producto.Nombre : "",
+            descripcionProducto: prop_producto ? prop_producto.Descripcion : "",
+            categoria: prop_producto ? prop_producto.Categoria : "",
+            precio: prop_producto ? prop_producto.Precio : 0,
         };
     }
 

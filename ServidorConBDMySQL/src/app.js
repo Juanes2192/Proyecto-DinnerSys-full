@@ -6,20 +6,20 @@ import routerProductos from "./router/Productos.js";
 import routerMesas from "./router/Mesas.js";
 
 const app = express();
-const port = 3003;
+const port = 3003; //Puerto por el que correra el backend
 
-app.use(json());
-app.use(cors());    
+app.use(json()); //Para que el servidor entienda los datos que le envian en formato json
+app.use(cors()); //Para que el servidor acepte peticiones de otros servidores
 
 app.use('/usuarios', routerUsuario);
 app.use('/mesas', routerMesas);
 app.use('/productos', routerProductos);
 
-app.use((req,res)=>{
+app.use((req,res)=>{ //Middleware para manejar rutas no encontradas
     res.status(404).json({Error: "No se encontro la ruta"});
     console.log("No se encontro la ruta");
 })
 
-app.listen(port, () => {
+app.listen(port, () => {//Levantamos el servidor
     console.log(`Saludo desde el servidor corriendo en el puerto ${port}`);
 });

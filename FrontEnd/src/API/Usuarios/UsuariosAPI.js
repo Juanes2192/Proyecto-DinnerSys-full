@@ -1,36 +1,35 @@
 import axios from "axios";
 import { BASE_API } from "../../utils/constants";
+// BASE_API = "http://localhost:3003"
 
-//CRUD DE USUARIOS
-export const Loggin = async (usuario, clave) => {
-    try {
-        const usuarios = await axios.post(`${BASE_API}/usuarios/loggin`, {usuario, clave})
-        return usuarios.data;
-    } catch (error) {
-        console.log(error);
-        return null;
-    }
-}
-
-//Mostrar Todos Los Usuarios
+//CRUD USUARIOS
+//MOSTRAR TODOS LOS USUARIOS
 export const MostrarUsuarios = async () => {
     try {
         const usuarios = await axios.get(`${BASE_API}/usuarios/getUsuarios`);
-        return usuarios.data;
+        return usuarios.status === 200 ? usuarios.data : [];
     } catch (error) {
         console.log(error);
-        return null;
     }
 }
 
-//METODO CREATE 
-//Crear Usuario
-export const CrearUsuario = async (newUser) => { 
+//CREAR NUEVO USUARIO
+export const NuevoUsuario = async (newUsuario) => { 
     try {
-        const isInsert = await axios.post(`${BASE_API}/usuarios/createUsuario`, newUser);
-        return isInsert.data;
+        const respuesta = await axios.post(`${BASE_API}/usuarios/createUsuario`, newUsuario);
+        return respuesta.status === 201 ? respuesta.data : false;
     } catch (error) {
         console.log(error);
-        return null;
     }
 };
+
+//ELIMINAR USUARIO
+export const EliminarUsuario = async (UsuarioId) => { 
+    try {
+        const isDeleted = await axios.delete(`${BASE_API}/usuarios/deleteUsuario/${UsuarioId}`);
+        return isDeleted.status === 200 ? true : false;
+    } catch (error) {
+        console.log(error);
+    }
+};
+

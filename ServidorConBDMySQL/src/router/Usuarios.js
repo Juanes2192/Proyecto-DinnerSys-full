@@ -1,15 +1,17 @@
 import { Router } from 'express';
 const routerUsuario = Router();
 
+
 import {getUsuarios, getUsuarioById,getMeseros, verificarCredenciales, 
     createUsuario, updateUsuario, deleteUsuario} from '../controller/Usuarios.js';
-
-routerUsuario.post('/loggin', verificarCredenciales);
+    
+//Todas las rutas de usuarios
+routerUsuario.post('/loggin', verificarCredenciales); //Vetifica credenciales
 routerUsuario.get('/getUsuarios', getUsuarios); //Trae todos los usuarios
-routerUsuario.get('/getUsuario/:id', getUsuarioById);
-routerUsuario.get('/getMeseros', getMeseros);
-routerUsuario.post('/createUsuario', createUsuario);
-routerUsuario.put('/updateUsuario/:UsuarioId', updateUsuario);
-routerUsuario.delete('/deleteUsuario/:UsuarioId', deleteUsuario);
+routerUsuario.get('/getUsuario/:id', getUsuarioById); //Trae un usaario por su id
+routerUsuario.get('/getMeseros', getMeseros); //Trae todos los meseros
+routerUsuario.post('/createUsuario', createUsuario); //Crea un usuario
+routerUsuario.put('/updateUsuario/:UsuarioId', updateUsuario); //Actualiza un usuario 
+routerUsuario.delete('/deleteUsuario/:UsuarioId', deleteUsuario); //Eliminar un usuario
 
 export default routerUsuario;
